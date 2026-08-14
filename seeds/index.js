@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const cities = require('./cities');
-const { places, descriptors } = require('./seedHelpers');
+const { places, descriptors } = require('./seedHelper');
 const Campground = require('../models/campground');
 
 mongoose.connect("mongodb://127.0.0.1:27017/basecamp");

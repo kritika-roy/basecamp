@@ -3,7 +3,7 @@ const cities = require('./cities');
 const { places, descriptors } = require('./seedHelper');
 const Campground = require('../models/campground');
 
-mongoose.connect("mongodb://127.0.0.1:27017/basecamp");
+mongoose.connect("mongodb://127.0.0.1:27017/basecamp-maptiler");
 
 const db = mongoose.connection;
 
@@ -23,6 +23,13 @@ const seedDB = async () => {
         const camp = new Campground({
             author: '6a7f3f4e95eca59706d21870',
             location: `${cities[random1000].city}, ${cities[random1000].state}`,
+            geometry: {
+                type: "Point",
+                coordinates: [
+                    cities[random1000].longitude,
+                    cities[random1000].latitude,
+                ]
+            },
             title: `${sample(descriptors)} ${sample(places)}`,
             description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam dolores vero perferendis laudantium, consequuntur voluptatibus nulla architecto, sit soluta esse iure sed labore ipsam a cum nihil atque molestiae deserunt!',
             price,
